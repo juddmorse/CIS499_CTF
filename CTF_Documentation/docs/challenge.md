@@ -348,3 +348,4 @@ What part of an Ethernet frame allows detection of corrupted data within the ent
     None provided.
 #### Solution Detail
 FCS information can be gleaned by googling key terms within the question. This leads users to the Ethernet frame Wikipedia page, which contains the answer.
+This is a test to check commits
