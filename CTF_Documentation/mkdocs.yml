@@ -1,0 +1,6 @@
+site_name: CTF Documentation
+nav:
+    - Home: index.md
+    - About: about.md
+    - Challenge Questions: challenge.md
+theme: readthedocs
