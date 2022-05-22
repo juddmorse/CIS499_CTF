@@ -115,6 +115,57 @@ The solution to this question, and the other internet browser history questions,
 
 Additionally, more sophisticated forensic tools like Autopsy can be used to automatically retrieve all browser history data from an image and put it all in one convienent location for browsing (in the case of Autopsy, that location is `Results/Extracted Content/Web Search` and `Results/Extracted Content/Web History`).
 
+### Diving into the Registry 1
+#### Question
+Using that same SuspectImage.E01 file, let's dive into the registry.
+First, what is the current build number for the system?
+#### Answer
+    19043
+#### Hint
+    The big Registry files that are usually examined are SAM, SECURITY, SOFTWARE, SYSTEM, and NTUSER.DAT.
+    If we're looking for a question about the Windows build number, which hive would that fall under?
+#### Solution Detail
+Using a tool such as FTK Imager, registry hive files can be extracted from the image and imported to a more accessible location (such as a dedicated folder on the user's local Desktop). The file path to reach the SAM, SECURITY, SOFTWARE, and SYSTEM hives is `[root]\Windows\System32\Config`. The file path to reach the NTUSER.DAT hive is `[root]\Users\<user name>`
+
+Once the hives have been exported, a tool such as Eric Zimmerman's Registry Explorer can be used to easily explore the hives.
+
+For this challenge, the answer can be found by drilling down into the SOFTWARE hive. The full path to the flag value (the CurrentBuildValue) is `ROOT\Microsoft\Windows NT\CurrentVersion`.
+
+### Diving into the Registry 2
+#### Question
+How many processors does this system have?
+#### Answer
+    2
+#### Hint
+    Think about what the question is asking. Out of the SAM, SECURITY, SOFTWARE, SYSTEM, 
+    and NTUSER.DAT hives, which would contain hardware specs?
+#### Solution Detail
+Using a tool such as FTK Imager, registry hive files can be extracted from the image and imported to a more accessible location (such as a dedicated folder on the user's local Desktop). The file path to reach the SAM, SECURITY, SOFTWARE, and SYSTEM hives is `[root]\Windows\System32\Config`. The file path to reach the NTUSER.DAT hive is `[root]\Users\<user name>`
+
+Once the hives have been exported, a tool such as Eric Zimmerman's Registry Explorer can be used to easily explore the hives.
+
+For this challenge, the answer can be found by drilling down into the SYSTEM hive. The full path to the flag value (the NUMBER_OF_PROCESSORS) is `ROOT\ControlSet001\Control\Session Manager\Environment`.
+
+### Diving into the Registry 3
+#### Question
+What is the machine SID?
+(Flag format: S-1-5-21-<value 1>-<value 2>-<value 3>
+#### Answer
+    S-1-5-21-185226503-3129639693-4066478847
+#### Hint
+    You're going to want to look in SAM\Domains\Account. 
+    There's a method to for taking some of the HEX in that value V and turning it into the machine SID.
+#### Solution Detail
+Using a tool such as FTK Imager, registry hive files can be extracted from the image and imported to a more accessible location (such as a dedicated folder on the user's local Desktop). The file path to reach the SAM, SECURITY, SOFTWARE, and SYSTEM hives is `[root]\Windows\System32\Config`. The file path to reach the NTUSER.DAT hive is `[root]\Users\<user name>`
+
+Once the hives have been exported, a tool such as Eric Zimmerman's Registry Explorer can be used to easily explore the hives.
+
+For this challenge, the answer can be found by drilling down into the SAM hive. The full path to the flag value (V) is `ROOT\SAM\Domains\Account`.
+
+To collect the machine SID, collect the value of the last 12 bytes of HEX within the V value. Next, divide those 12 bytes into three separate, four-byte sections. For each section, convert the Little-Endian values of the HEX to decimal. Each section will correspond to that value.
+
+Working though the value on the challenge, the last 12 bytes of the V value are `07-55-0A-0B-0D-83-8A-BA-FF-8A-61-F2`. Dividing the 12 bytes into three four-byte pieces, we get `07-55-0A-0B`, `0D-83-8A-BA`, and `FF-8A-61-F2`. Converting to Little-Endian, our values becom `0B-0A-55-07`, `BA-8A-83-0D`, and `F2-61-8A-FF`. Finally, converting HEX to decimal, we get `185226503` for value 1, `3129639693` for value 2, and `4066478847` for value 3. Thus the final key value is S-1-5-21-185226503-3129639693-4066478847.
+
 ## ICS Knowledge-Based Questions
 ### ICS Protocols
 #### Question
