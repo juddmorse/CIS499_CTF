@@ -3,6 +3,63 @@
 ## Crossword Puzzles
 
 ### Basic Knowledge Crossword
+## Decryption
+### Building up the Base-ics
+#### Question
+You have found a sticky note slapped onto the back of a PLC containing the following:
+
+`00110101 00110011 00100000 00110101 00111000 00100000 00110100 01100100 00100000 00110110 00110111 00100000 00110110 00110100 00100000 00110100 00110111 00100000 00110110 00111000 00100000 00110111 00110000 00100000 00110110 00110011 00100000 00110111 00111001 00100000 00110100 00110010 00100000 00110011 00110000 00100000 00110110 00110001 00100000 00110100 00110111 00100000 00110110 01100011 00100000 00110111 00110101 00100000 00110101 01100001 00100000 00110111 00111001 00100000 00110100 00110010 00100000 00110111 00110110 00100000 00110110 00110010 00100000 00110110 01100001 00100000 00110011 00111000 00100000 00110011 01100100`
+
+Can you decode the message on this sticky note?
+#### Answer
+    Is this thing on?
+#### Hint
+    This would be a great time to bring up the [CyberChef](https://gchq.github.io/CyberChef/) web app!
+#### Solution Detail
+CyberChef was used to build and decode these challenges.
+Upon opening the challenge question, players are presented with a message that looks to be in binary. We start by copying/pasting the binary into CyberChef's input window. Then we add 'From Binary' to the recipe. This gives us the following output:
+`53 58 4d 67 64 47 68 70 63 79 42 30 61 47 6c 75 5a 79 42 76 62 6a 38 3d`
+Based on the grouping and values of each number pair, this looks to be Hex. So next we'll add 'From Hex' to the recipe (be sure not to move or delete the first part of the recipe). After decoding the Hex, we're left with this output:
+`SXMgdGhpcyB0aGluZyBvbj8=`
+The '=' at the end of this string is a good indicator that we're now looking at something in Base64. So next we'll add 'From Base64' to our recipe (be sure not to delete/move the prior pieces of the recipe). This provides us with the final flag, 'Is this thing on?'
+
+### Coming Across the Wire
+#### Question
+You're at an DEF CON in the ICS Village when a mysterious person in a trench coat hands you a card. Typed out on the card is the following message:
+
+`MzUgMzUgMjAgMzUgMzUgMjAgMzQgMzAgMjAgMzUgMzUgMjAgMzUgMzUgMjAgMzUgMzUgMjAgMzQgMzAgMjAgMzUgMzYgMjAgMzUgMzUgMjAgMzUgMzYgMjAgMzQgMzAgMjAgMzUgMzYgMjAgMzUgMzYgMjAgMzUgMzYgMjAgMzQgMzAgMjAgMzUgMzYgMjAgMzEgMzIgMjAgMzUgMzUgMjAgMzUgMzYgMjAgMzUgMzUgMjAgMzUgMzYgMjAgMzQgMzAgMjAgMzUgMzUgMjAgMzUgMzUgMjAgMzUgMzUgMjAgMzQgMzAgMjAgMzUgMzUgMjAgMzUgMzYgMjAgMzUgMzYgMjAgMzQgMzAgMjAgMzUgMzYgMjAgMzEgMzIgMjAgMzUgMzYgMjAgMzUgMzYgMjAgMzQgMzAgMjAgMzUgMzYgMjAgMzUgMzYgMjAgMzUgMzYgMjAgMzEgMzIgMjAgMzUgMzUgMjAgMzQgMzAgMjAgMzUgMzYgMjAgMzUgMzYgMjAgMzUgMzYgMjAgMzUgMzYgMjAgMzQgMzAgMjAgMzUgMzYgMjAgMzEgMzIgMjAgMzUgMzUgMjAgMzUgMzYgMjAgMzUgMzYgMjAgMzUgMzYgMjAgMzQgMzAgMjAgMzUgMzYgMjAgMzQgMzAgMjAgMzUgMzYgMjAgMzUgMzYgMjAgMzUgMzYgMjAgMzQgMzAgMjAgMzUgMzUgMjAgMzEgMzIgMjAgMzUgMzUgMjAgMzUgMzUgMjAgMzUgMzUgMjAgMzQgMzAgMjAgMzUgMzYgMjAgMzUgMzYgMjAgMzUgMzUgMjAgMzUgMzYgMjAgMzEgMzIgMjAgMzUgMzYgMjAgMzUgMzUgMjAgMzQgMzAgMjAgMzUgMzYgMjAgMzUgMzUgMjAgMzUgMzYgMjAgMzUgMzYgMjAgMzQgMzAgMjAgMzUgMzYgMjAgMzUgMzUgMjAgMzUgMzYgMjAgMzUgMzYgMjAgMzEgMzIgMjAgMzUgMzUgMjAgMzUgMzYgMjAgMzUgMzUgMjAgMzUgMzYgMjAgMzQgMzAgMjAgMzUgMzUgMjAgMzUgMzUgMjAgMzUgMzUgMjAgMzQgMzAgMjAgMzUgMzUgMjAgMzUgMzYgMjAgMzUgMzYgMjAgMzQgMzAgMjAgMzUgMzYgMjAgMzQgMzAgMjAgMzUgMzYgMjAgMzUgMzYgMjAgMzUgMzY=`
+
+Can you decrypt the message on the card?
+#### Answer
+    MORSE CODE IS THE BEST OF ALL CODES
+#### Hint
+    This would be a great time to bring up the [CyberChef](https://gchq.github.io/CyberChef/) web app!
+#### Solution Detail
+CyberChef was used to build and decode these challenges.
+Right away, there are two very noticable details about this message. First, while it's not clear what's being represented in the encrypted data, there seems to be a lot of repetition. Second, the '=' at the end indicates that it's likely encoded in Base64.
+In CyberChef, we copy/paste the encrypted message into the Input window, and add 'From Base64' to our recipe. This gives us the following output:
+
+`35 35 20 35 35 20 34 30 20 35 35 20 35 35 20 35 35 20 34 30 20 35 36 20 35 35 20 35 36 20 34 30 20 35 36 20 35 36 20 35 36 20 34 30 20 35 36 20 31 32 20 35 35 20 35 36 20 35 35 20 35 36 20 34 30 20 35 35 20 35 35 20 35 35 20 34 30 20 35 35 20 35 36 20 35 36 20 34 30 20 35 36 20 31 32 20 35 36 20 35 36 20 34 30 20 35 36 20 35 36 20 35 36 20 31 32 20 35 35 20 34 30 20 35 36 20 35 36 20 35 36 20 35 36 20 34 30 20 35 36 20 31 32 20 35 35 20 35 36 20 35 36 20 35 36 20 34 30 20 35 36 20 34 30 20 35 36 20 35 36 20 35 36 20 34 30 20 35 35 20 31 32 20 35 35 20 35 35 20 35 35 20 34 30 20 35 36 20 35 36 20 35 35 20 35 36 20 31 32 20 35 36 20 35 35 20 34 30 20 35 36 20 35 35 20 35 36 20 35 36 20 34 30 20 35 36 20 35 35 20 35 36 20 35 36 20 31 32 20 35 35 20 35 36 20 35 35 20 35 36 20 34 30 20 35 35 20 35 35 20 35 35 20 34 30 20 35 35 20 35 36 20 35 36 20 34 30 20 35 36 20 34 30 20 35 36 20 35 36 20 35 36`
+
+This looks like Hex, but there are no alpha bits within any of the bytes (3f, 2a, etc), which is odd. But again, we're seeing a lot of repeated values in the hex. Adding 'From Hex' to the recipe, we get the following output:
+
+`55 55 40 55 55 55 40 56 55 56 40 56 56 56 40 56 12 55 56 55 56 40 55 55 55 40 55 56 56 40 56 12 56 56 40 56 56 56 12 55 40 56 56 56 56 40 56 12 55 56 56 56 40 56 40 56 56 56 40 55 12 55 55 55 40 56 56 55 56 12 56 55 40 56 55 56 56 40 56 55 56 56 12 55 56 55 56 40 55 55 55 40 55 56 56 40 56 40 56 56 56`
+
+Again we're left with a smaller grouping of numbers, still resembling a Hex layout, but with a total of four numerical values within the message. This leads us to think that we're dealing with some kind of standardization, like Morse Code. Using trial and error, we can deduce that the current input is in Octal. When 'From Octal' is added to the recipe, we get the following output:
+
+'-- --- .-. ... .
+-.-. --- -.. .
+.. ...
+- .... .
+-... . ... -
+--- ..-.
+.- .-.. .-..
+-.-. --- -.. . ...'
+
+This looks like the standard Morse Code dots and dashes. So adding 'From Morse Code' to our recipe gives us this final result:
+
+`MORSE CODE IS THE BEST OF ALL CODES`
+
 ## Host Forensics
 ### Hashing Out a Plan
 #### Question
