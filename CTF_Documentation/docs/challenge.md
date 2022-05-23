@@ -47,14 +47,21 @@ This looks like Hex, but there are no alpha bits within any of the bytes (3f, 2a
 
 Again we're left with a smaller grouping of numbers, still resembling a Hex layout, but with a total of four numerical values within the message. This leads us to think that we're dealing with some kind of standardization, like Morse Code. Using trial and error, we can deduce that the current input is in Octal. When 'From Octal' is added to the recipe, we get the following output:
 
-'-- --- .-. ... .
+-- --- .-. ... .
+
 -.-. --- -.. .
+
 .. ...
-- .... .
+
+\- .... .
+
 -... . ... -
+
 --- ..-.
+
 .- .-.. .-..
--.-. --- -.. . ...'
+
+-.-. --- -.. . ...
 
 This looks like the standard Morse Code dots and dashes. So adding 'From Morse Code' to our recipe gives us this final result:
 
