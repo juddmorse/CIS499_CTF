@@ -19,9 +19,11 @@ Can you decode the message on this sticky note?
 CyberChef was used to build and decode these challenges.
 Upon opening the challenge question, players are presented with a message that looks to be in binary. We start by copying/pasting the binary into CyberChef's input window. Then we add 'From Binary' to the recipe. This gives us the following output:
 `53 58 4d 67 64 47 68 70 63 79 42 30 61 47 6c 75 5a 79 42 76 62 6a 38 3d`
+
 Based on the grouping and values of each number pair, this looks to be Hex. So next we'll add 'From Hex' to the recipe (be sure not to move or delete the first part of the recipe). After decoding the Hex, we're left with this output:
 `SXMgdGhpcyB0aGluZyBvbj8=`
-The '=' at the end of this string is a good indicator that we're now looking at something in Base64. So next we'll add 'From Base64' to our recipe (be sure not to delete/move the prior pieces of the recipe). This provides us with the final flag, 'Is this thing on?'
+
+The '=' at the end of this string is a good indicator that we're now looking at something in Base64. So next we'll add 'From Base64' to our recipe (be sure not to delete/move the prior pieces of the recipe). This provides us with the final flag, `Is this thing on?`
 
 ### Coming Across the Wire
 #### Question
