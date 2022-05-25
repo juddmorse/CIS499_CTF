@@ -333,7 +333,7 @@ Analyze the provided Modbus traffic PCAP to identify what type of attack is occu
 #### Solution Detail
 This challenge will prove to be difficult to complete by using Wireshark. I used NetworkMiner to analyze the PCAP file which lays out the series of events that occured and makes it clear there was a Man-in-the-Middle attack.
 
-### Modbus Attack Identification Challenge #2 (Uses Modbus_PCAP_Challenge_1.pcap)
+### Modbus Attack Identification Challenge #2 (Uses Modbus_PCAP_Challenge_2.pcap)
 #### Question
 Analyze the provided Modbus traffic PCAP to identify what type of attack is occurring.
 #### Answer
