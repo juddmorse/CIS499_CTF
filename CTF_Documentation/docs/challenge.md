@@ -315,106 +315,150 @@ Which malware was the first of its kind to target safety instrumented systems wi
 The answer to this question can be obtained by googling keywords within the question.
 
 ## Ladder Logic
-### Basic Ladder Logic
+### Basic Ladder Logic (Uses Ladder_Logic_Easy.PNG)
 #### Question
-.
+With this ladder logic diagram will the Motor stay ON if the “Test Button” is depressed and released?
 #### Answer
-    .
+    No
 #### Hint
-    .
+    Think of the flow of electricity.
 #### Solution Detail
-.
+Since the test button bypasses both the start and stop logic the flow of electricity to the motor will only be completed while the test button is depressed.
 
-### Intermediate Ladder Logic
+### Intermediate Ladder Logic (Uses Ladder_Logic_Medium.PNG)
 #### Question
-.
-#### Answer
-    .
-#### Hint
-    .
-#### Solution Detail
-.
+With this ladder logic diagram what actions will occur if the “On/Off Switch” is depressed?
 
-### Advanced Ladder Logic
-#### Question
-.
+Answer Format = Warning Light: ON or OFF Motor 1: ON or OFF Motor 2: ON or OFF (Must enter semi-colons in your answer.)
 #### Answer
-    .
+    Warning Light: ON Motor 1: ON Motor 2: ON
 #### Hint
-    .
+    Think about what the relay is doing.
 #### Solution Detail
-.
+Once the On/Off switch is depressed electricity will flow through the top rung and will activate the relay which is linked to the relay in the second rung. Once this relay is activated then the electricty will have access to the warning light, and both motors resulting in all of them to be "ON".
 
-### Identify Ladder Logic Symbols #1
+### Advanced Ladder Logic (Uses Ladder_Logic_Hard.PNG)
 #### Question
-.
+With this ladder logic diagram what will the “Light” do after the “Start Button” is depressed?
 #### Answer
-    .
+    Blink
 #### Hint
-    .
+    Think about what happens to the electricity as it flows through the different rungs and how this affects the relays.
 #### Solution Detail
-.
+This ladder logic diagram takes advantage of only a single rung but has multiple nested rungs that can be confusing if you don't understand how the electricity will flow through them. For this diagram the reason why the light blinks instead of just turning and staying on is because of how the relays work. When the start button is depressed the flow of electricity will only be able to flow through the second nested rung based on the logic and this will activate the relay which is linked to the relay in the second set of nested logic. Once the electricity reaches the second nested rung it has a path to flow to the light but as it passes through the rung it will also activate the relay again. This causes the flow of electricity to pulse the light on and off. 
 
-### Identify Ladder Logic Symbols #2
+### Identify Ladder Logic Symbols #1 (Uses Ladder_Logic_Symbol_1.PNG)
 #### Question
-.
+Identify what ladder logic symbol is in the attached file.
 #### Answer
-    .
+    Normally Open
 #### Hint
-    .
+    Not provided.
 #### Solution Detail
-.
+A Google search of ladder logic symbols will provide the answer to this.
 
-### Identify Ladder Logic Symbols #3
+### Identify Ladder Logic Symbols #2 (Uses Ladder_Logic_Symbol_2.PNG)
 #### Question
-.
+Identify what ladder logic symbol is in the attached file.
 #### Answer
-    .
+    Normally Closed
 #### Hint
-    .
+    Not provided.
 #### Solution Detail
-.
+A Google search of ladder logic symbols will provide the answer to this.
+
+### Identify Ladder Logic Symbols #3 (Uses Ladder_Logic_Symbol_3.PNG)
+#### Question
+Identify what ladder logic symbol is in the attached file.
+#### Answer
+    Coil
+#### Hint
+    Not provided.
+#### Solution Detail
+A Google search of ladder logic symbols will provide the answer to this.
 
 ## Modbus Network Analysis
-### Malicious Modbus Command
+### Malicious Modbus Command #1 (Uses fortiphyd_attack.pcapng)
 #### Question
-.
+What is the MAC address of the IP address 192.168.90.100?
 #### Answer
-    .
+    08:00:27:5d:7b:c3
 #### Hint
-    .
+    Not provided.
 #### Solution Detail
-.
+You simply need to find a packet within the PCAP that is associated with the IP 192.168.90.100 and dig into the packet data within the "data-link" breakdown to find this answer.
 
-### Pressure Tank goes BOOM! #1
+### Malicious Modbus Command #2 (Uses fortiphyd_attack.pcapng)
 #### Question
-.
+What is the name of the ScadaBR file being requested in the web traffic?
 #### Answer
-    .
+    MiscDwr.doLongPoll.dwr
 #### Hint
-    .
+    Not provided.
 #### Solution Detail
-.
+You will have to dig through the PCAP file until you find HTTP traffic that is associated ScadaBR and packet information will contain the file name for this answer. Packet #18405 is an example.
 
-### Modbus Attack Identification Challenge #1
+### Malicious Modbus Command #3 (Uses fortiphyd_bitflip.pcapng)
 #### Question
-.
+What is the packet number in the PCAP file that sent the malicious write command?
 #### Answer
-    .
+    15050
 #### Hint
-    .
+    Pay attention to the ICS protocol.
 #### Solution Detail
-.
+If you sort by the Modbus protocol you will see specific packets that show write commands that indicate when the attack occured.
 
-### Modbus Attack Identification Challenge #2
+### Pressure Tank goes BOOM! #1 (Uses fortiphyd_bitflip.pcapng)
 #### Question
-.
+How many different Modbus function codes are there in this PCAP?
+
+Answer = #
 #### Answer
-    .
+    3
 #### Hint
-    .
+    Not provided.
 #### Solution Detail
-.
+Sorting the packets by Modbus you will be able to find there are 3 distinct function codes in the PCAP.
+
+### Pressure Tank goes BOOM! #2 (Uses fortiphyd_attack.pcapng)
+#### Question
+What type of webserver is being used during this attack?
+#### Answer
+    Apache-Coyote
+#### Hint
+    Not provided.
+#### Solution Detail
+By sorting the packets by protocol and looking at the HTTP traffic you can pull this answer from the packet data breakdown.
+
+### Pressure Tank goes BOOM! #3 (Uses fortiphyd_attack.pcapng)
+#### Question
+What is the checksum of the last POST command to ScadaBR?
+#### Answer
+    0x6289
+#### Hint
+    Not provided.
+#### Solution Detail
+By sorting the packets and looking at the HTTP traffic you can scroll down to the last POST request and dig into the packet data to find the checksum value.
+
+### Modbus Attack Identification Challenge #1 (Uses Modbus_PCAP_Challenge_1.pcap)
+#### Question
+Analyze the provided Modbus traffic PCAP to identify what type of attack is occurring.
+#### Answer
+    Man In The Middle
+#### Hint
+    Wireshark might not be the best PCAP analyzer for this
+#### Solution Detail
+This challenge will prove to be difficult to complete by using Wireshark. I used NetworkMiner to analyze the PCAP file which lays out the series of events that occured and makes it clear there was a Man-in-the-Middle attack.
+
+### Modbus Attack Identification Challenge #2 (Uses Modbus_PCAP_Challenge_2.pcap)
+#### Question
+Analyze the provided Modbus traffic PCAP to identify what type of attack is occurring.
+#### Answer
+    Query Flooding
+#### Hint
+    Wireshark might not be the best PCAP analyzer for this.
+#### Solution Detail
+Again, this challenge will be difficult to complete by using Wireshark. I used NetworkMiner to analyze the PCAP and it if you look under the "Sessions" tab and sort by event you will see there is a large amount of query requests over a short amount of time. Indicating a query flood attack.
 
 ## Networking
 ### Basic Networking Knowledge
