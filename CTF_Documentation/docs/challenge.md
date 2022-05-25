@@ -323,7 +323,7 @@ What is the checksum of the last POST command to ScadaBR?
 #### Solution Detail
 By sorting the packets and looking at the HTTP traffic you can scroll down to the last POST request and dig into the packet data to find the checksum value.
 
-### Modbus Attack Identification Challenge #1 (Uses Modbus_PCAP_Challenge_1.pcap
+### Modbus Attack Identification Challenge #1 (Uses Modbus_PCAP_Challenge_1.pcap)
 #### Question
 Analyze the provided Modbus traffic PCAP to identify what type of attack is occurring.
 #### Answer
@@ -333,7 +333,7 @@ Analyze the provided Modbus traffic PCAP to identify what type of attack is occu
 #### Solution Detail
 This challenge will prove to be difficult to complete by using Wireshark. I used NetworkMiner to analyze the PCAP file which lays out the series of events that occured and makes it clear there was a Man-in-the-Middle attack.
 
-### Modbus Attack Identification Challenge #2 (Uses
+### Modbus Attack Identification Challenge #2 (Uses Modbus_PCAP_Challenge_1.pcap)
 #### Question
 Analyze the provided Modbus traffic PCAP to identify what type of attack is occurring.
 #### Answer
